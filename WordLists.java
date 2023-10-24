@@ -40,32 +40,20 @@ public class WordLists{
          
 
 
-   public static ArrayList<String> notAt(ArrayList<String> words,
-      char included, int index){
-         // an temp array where the new words are going to be copied to
+      public static ArrayList<String> notAt(ArrayList<String> words,
+      char excluded, int index){
          ArrayList<String> temp = new ArrayList<String>();
-         //goes through the elements in the array
-            for (int i = 0; i < words.size(); i++){
-               String checkWord = words.get(i);
-               // checks if index is valid
-               if (index >= 0 && index < checkWord.length()){
-                  char ch = checkWord.charAt(index);
-                  // check if the character at that index is equal 
-                  // to that which is being checked
-                  if (ch != included){
-                     // checks if the character appears somewhere else 
-                     // in the word
-                     for (int x = 0; x < checkWord.length(); x++){
-                        char checked = checkWord.charAt(x);
-                        if (checked == included){
-                           temp.add(checkWord);
-                        }
-                     }
-                  }
+         for (String checkWord : words){
+            if (index >= 0 && index < checkWord.length()){
+               char ch = checkWord.charAt(index);
+               if (ch != excluded){
+                  temp.add(checkWord);
                }
             }
+         }
          return temp;
    }
+
 
  
    public static ArrayList<String> notIn(ArrayList<String> words,
